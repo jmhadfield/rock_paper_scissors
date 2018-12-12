@@ -24,7 +24,7 @@ function game (){
             }
 
             function playerPlay () {
-                let playerChoice = options[Math.floor(Math.random() * options.length)];
+                let playerChoice = prompt("Enter Rock, Paper or Scissors").toLowerCase();
                 return playerChoice;
             }
 
@@ -32,29 +32,29 @@ function game (){
             let computerSelection = computerPlay ();
 
             function playRound (playerSelection, computerSelection){ 
-                    if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                    if (playerSelection == "rock" && computerSelection == "Scissors") {
                         playerCounter++;
                         return "You did it, Rock beats Scissors!";
-                    } else if (playerSelection == "Rock" && computerSelection === "Paper") {
+                    } else if (playerSelection == "rock" && computerSelection === "Paper") {
                         computerCounter++;
                         return "You lost this time, Rock loses to Paper!";
-                    } else if (playerSelection == "Rock" && computerSelection === "Rock") {
+                    } else if (playerSelection == "rock" && computerSelection === "Rock") {
                         return "Try Again, it's a draw!";
-                    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+                    } else if (playerSelection == "scissors" && computerSelection == "Rock") {
                         computerCounter++;
                         return "They blunt your scissors, the computer won!";
-                    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+                    } else if (playerSelection == "scissors" && computerSelection == "Paper") {
                         playerCounter++;
                         return "Nice one, you shredded that paper";
-                    } else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+                    } else if (playerSelection == "scissors" && computerSelection == "Scissors") {
                         return "That is the same so... it's a draw!";
-                    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+                    } else if (playerSelection == "paper" && computerSelection == "Rock") {
                         playerCounter++;
                         return "You covered that rock!";
-                    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+                    } else if (playerSelection == "paper" && computerSelection == "Scissors") {
                         computerCounter++;
                         return "You got shredded up by the computer!";
-                    } else if (playerSelection == "Paper" && computerSelection == "Paper") {
+                    } else if (playerSelection == "paper" && computerSelection == "Paper") {
                         return "Boring. Do it again!";
                     }
             }
