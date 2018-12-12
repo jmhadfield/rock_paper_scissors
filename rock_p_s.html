@@ -4,46 +4,70 @@
 
 <script> 
 
-let options = ["Rock", "Paper", "Scissors"]
+//everything is wrapped in the function game
+function game (){
+//when game is called the counters are set to zero
+    let playerCounter = 0;
+    let computerCounter = 0;
+//the game will play until one of these conditions is false
+    while (computerCounter < 3 && playerCounter < 3) {
+//the conditions will update after playing theRound        
+        theRound();
+    
+        function theRound () { 
 
-function computerPlay () {
-    let computerChoice = options[Math.floor(Math.random() * options.length)];
-    return computerChoice;
+            let options = ["Rock", "Paper", "Scissors"]
+
+            function computerPlay () {
+                let computerChoice = options[Math.floor(Math.random() * options.length)];
+                return computerChoice;
+            }
+
+            function playerPlay () {
+                let playerChoice = options[Math.floor(Math.random() * options.length)];
+                return playerChoice;
+            }
+
+            let playerSelection = playerPlay ();
+            let computerSelection = computerPlay ();
+
+            function playRound (playerSelection, computerSelection){ 
+                    if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                        playerCounter++;
+                        return "You did it, Rock beats Scissors!";
+                    } else if (playerSelection == "Rock" && computerSelection === "Paper") {
+                        computerCounter++;
+                        return "You lost this time, Rock loses to Paper!";
+                    } else if (playerSelection == "Rock" && computerSelection === "Rock") {
+                        return "Try Again, it's a draw!";
+                    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+                        computerCounter++;
+                        return "They blunt your scissors, the computer won!";
+                    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+                        playerCounter++;
+                        return "Nice one, you shredded that paper";
+                    } else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+                        return "That is the same so... it's a draw!";
+                    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+                        playerCounter++;
+                        return "You covered that rock!";
+                    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+                        computerCounter++;
+                        return "You got shredded up by the computer!";
+                    } else if (playerSelection == "Paper" && computerSelection == "Paper") {
+                        return "Boring. Do it again!";
+                    }
+            }
+            //these will be printed after playing the round
+            console.log("The user has selected " + playerSelection);
+            console.log("The computer has selected " + computerSelection);
+            console.log(playRound (playerSelection, computerSelection));
+            console.log("Player's Score: " + playerCounter);
+            console.log("Computer's Score: " + computerCounter); 
+        } 
+    } //reverts back to the while loop to see if one of the conditions is false
 }
-
-function playerPlay () {
-    let playerChoice = options[Math.floor(Math.random() * options.length)];
-    return playerChoice;
-}
-
-
-
-function singleRound (playerSelection, computerSelection) {
-    if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        console.log("You did it, Rock beats Scissors!");
-    } else if (playerSelection == "Rock" && computerSelection === "Paper") {
-        console.log("You lost this time, Rock loses to Paper!");
-    } else if (playerSelection == "Rock" && computerSelection === "Rock") {
-        console.log("Try Again, it's a draw!");
-    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        console.log("They blunt your scissors, the computer won!");
-    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        console.log("Nice one, you shredded that paper");
-    } else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-        console.log("That is the same so... it's a draw!");
-    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
-        console.log("You covered that rock!");
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        console.log("You got shredded up by the computer!");
-    } else if (playerSelection == "Paper" && computerSelection == "Paper") {
-        console.log("Boring. Do it again!");
-    }
-}
-let playerSelection = playerPlay();
-let computerSelection = computerPlay();
-console.log("The user has selected " + playerSelection);
-console.log("The computer has selected " + computerSelection);
-singleRound(playerSelection, computerSelection);
+game();
 
 </script>
 
