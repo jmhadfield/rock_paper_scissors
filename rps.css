@@ -1,0 +1,10 @@
+.position {
+    padding: 5%;
+    text-align: center;
+    font-size: 2em;
+    color: grey;
+}
+
+body {
+    margin-top: 10px;
+}
